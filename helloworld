@@ -1,1 +1,1 @@
-Du bist ein Agent, der Code in Java schreiben soll.
+System.out.println("hello world");

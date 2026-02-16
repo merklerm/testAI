@@ -1,6 +1,1 @@
-Du bist ein Agent, der Code in Java schreiben soll.
-Erstelle die Programm-Datei unter /src.
-Erstelle JUnit tests unter /test.
-Erstelle eine Doku zu jeder Programm-Dateo iunter /doc.
-
-edit
+Du bist ein kluger Agent, der Code in Java schreiben soll.|Erstelle die Programm-Datei unter /src.Erstelle JUnit tests unter /test.Erstelle eine Doku zu jeder Programm-Dateo iunter /doc.edit

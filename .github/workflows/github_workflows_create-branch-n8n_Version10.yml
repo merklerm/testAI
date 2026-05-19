@@ -17,6 +17,9 @@ jobs:
     outputs:
       branch_name: ${{ steps.set-name.outputs.branch_name }}
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Set branch name
         id: set-name
         shell: bash
@@ -28,27 +31,17 @@ jobs:
           fi
           echo "branch_name=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref_name }}
-
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Create branch
+      - name: Create and push branch
         env:
           BRANCH_NAME: ${{ steps.set-name.outputs.branch_name }}
         run: |
           git switch -c "$BRANCH_NAME"
-
-      - name: Push branch
-        env:
-          BRANCH_NAME: ${{ steps.set-name.outputs.branch_name }}
-        run: |
-          git push --set-upstream origin "$BRANCH_NAME"
+          git push -u origin "$BRANCH_NAME"
 
       - name: Print branch name
         run: echo "Created branch: ${{ steps.set-name.outputs.branch_name }}"

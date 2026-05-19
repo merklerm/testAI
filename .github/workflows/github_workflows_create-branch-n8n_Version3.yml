@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       branch_name:
-        description: 'Name of the branch to create'
+        description: Name of the branch to create
         required: false
         type: string
 
@@ -30,14 +30,25 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
-      - name: Create and push branch
-        shell: bash
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Create branch
         env:
           BRANCH_NAME: ${{ steps.set-name.outputs.branch_name }}
         run: |
-          git checkout -b "$BRANCH_NAME"
-          git push origin "$BRANCH_NAME"
+          git switch -c "$BRANCH_NAME"
+
+      - name: Push branch
+        env:
+          BRANCH_NAME: ${{ steps.set-name.outputs.branch_name }}
+        run: |
+          git push --set-upstream origin "$BRANCH_NAME"
 
       - name: Print branch name
         run: echo "Created branch: ${{ steps.set-name.outputs.branch_name }}"

@@ -1,0 +1,43 @@
+name: Create Branch for n8n
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Name of the branch to create'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    outputs:
+      branch_name: ${{ steps.set-name.outputs.branch_name }}
+    steps:
+      - name: Set branch name
+        id: set-name
+        shell: bash
+        run: |
+          if [ -n "${{ github.event.inputs.branch_name }}" ]; then
+            BRANCH_NAME="${{ github.event.inputs.branch_name }}"
+          else
+            BRANCH_NAME="n8n-branch-$(date +'%Y%m%d-%H%M%S')"
+          fi
+          echo "branch_name=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create and push branch
+        shell: bash
+        env:
+          BRANCH_NAME: ${{ steps.set-name.outputs.branch_name }}
+        run: |
+          git checkout -b "$BRANCH_NAME"
+          git push origin "$BRANCH_NAME"
+
+      - name: Print branch name
+        run: echo "Created branch: ${{ steps.set-name.outputs.branch_name }}"

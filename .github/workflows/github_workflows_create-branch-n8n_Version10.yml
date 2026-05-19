@@ -1,6 +1,6 @@
 name: Create Branch for n8n
 
-'on':
+on:
   workflow_dispatch:
     inputs:
       branch_name:

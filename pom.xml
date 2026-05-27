@@ -1,8 +1,581 @@
-<main>
-    <name>aroma2-canda</name>
-    <branch>master</branch>
-    <snapshot>3.2-SNAPSHOT</snapshot>
-    <version>3.2.3</version>
-    <tag>R3.2.3</tag>
-</main>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.arvato-systems.t9t</groupId>
+        <artifactId>t9t-build</artifactId>
+        <version>9.2.8</version>
+        <relativePath/>
+    </parent>
+
+    <artifactId>a28-build</artifactId>
+    <version>9.2-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <description>Build instructions for a28</description>
+
+    <properties>
+        <commerce.version>5.2.1</commerce.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>build</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>a28-dm</module>
+	
+                <module>a28-settings</module>
+                <module>a28-settings-openapi</module>
+                <module>a28-settings-api</module>
+                <module>a28-settings-apimapper</module>
+                <module>a28-settings-java</module>
+                <module>a28-settings-xtend</module>
+                <module>a28-settings-be</module>
+                <module>a28-settings-jpa</module>
+                <module>a28-settings-jdbc</module>
+
+                <module>aroma-base-apiext</module>
+                <module>aroma-sku-apiext</module>
+                <module>aroma-avstock-apiext</module>
+                <module>aroma-stock-apiext</module>
+                <module>aroma-customer-apiext</module>
+                <module>aroma-pricing-apiext</module>
+                <module>aroma-cart-apiext</module>
+                <module>aroma-order-apiext</module>
+                <module>aroma-package-apiext</module>
+                <module>aroma-xsdbundle-apiext</module>
+                <module>aroma-backinstock-apiext</module>
+                <module>aroma-instore-apiext</module>
+
+                <module>a28-base-api</module>
+                <module>a28-base-apimapper</module>
+                <module>a28-base-sapi</module>
+                <module>a28-base-jpa-entity</module>
+                <module>a28-base-jpa</module>
+                <module>a28-base-auth-jpa</module>
+
+                <module>a28-rep</module>
+                <module>a28-rep-api</module>
+                <module>a28-rep-be</module>
+                <module>a28-rep-jpa</module>
+
+                <module>a28-sku-api</module>
+                <module>a28-sku-calls</module>
+                <module>a28-sku-apimapper</module>
+                <module>a28-sku-sapi</module>
+                <module>a28-sku-jpa-entity</module>
+                <module>a28-sku-jpa</module>
+                <module>a28-sku-restapi</module>
+
+                <module>a28-stock-api</module>
+                <module>a28-stock-apimapper</module>
+                <module>a28-stock-sapi</module>
+                <module>a28-stock-jpa</module>
+                <module>a28-stock-restapi</module>
+
+                <module>a28-sourcing-api</module>
+                <module>a28-sourcing-sapi</module>
+                <module>a28-sourcing-be</module>
+                <module>a28-sourcing-jpa</module>
+
+                <module>a28-avstock-api</module>
+                <module>a28-avstock-sapi</module>
+                <module>a28-avstock-be</module>
+                <module>a28-avstock-jpa</module>
+                <module>a28-avstock-jdbc</module>
+                <module>a28-avstock-restapi</module>
+
+                <module>a28-history-api</module>
+                <module>a28-history-sapi</module>
+                <module>a28-history-jpa-entity</module>
+                <module>a28-history-jpa</module>
+
+                <module>a28-customer-api</module>
+                <module>a28-customer-sapi</module>
+                <module>a28-customer-be</module>
+                <module>a28-customer-be-fr</module>
+                <module>a28-customer-jpa-entity</module>
+                <module>a28-customer-jpa</module>
+                <module>a28-customer-apimapper</module>
+                <module>a28-customer-restapi</module>
+
+                <module>a28-tax-api</module>
+                <module>a28-tax-sapi</module>
+                <module>a28-tax-be</module>
+                <module>a28-tax-jpa</module>
+
+                <module>a28-pricing-api</module>
+                <module>a28-pricing-apimapper</module>
+                <module>a28-pricing-sapi</module>
+                <module>a28-pricing-be</module>
+                <module>a28-pricing-jpa</module>
+                <module>a28-pricing-restapi</module>
+
+                <module>a28-order-api</module>
+                <module>a28-order-apimapper</module>
+                <module>a28-order-sapi</module>
+
+                <module>a28-carrier-api</module>
+                <module>a28-carrier-sapi</module>
+                <module>a28-carrier-jpa</module>
+                <module>a28-carrier-apimapper</module>
+
+                <module>a28-psp-gw-api</module>
+                <module>a28-psp-gw-sapi</module>
+                <module>a28-psp-gw-jpa</module>
+
+                <module>a28-cart-api</module>
+                <module>a28-cart-sapi</module>
+                <module>a28-cart-be</module>
+                <module>a28-cart-ai-be</module>
+                <module>a28-cart-jpa</module>
+                <module>a28-cart-jdbc</module>
+                <module>a28-cart-cma</module>
+                <module>a28-cart-apimapper</module>
+                <module>a28-cart-restapi</module>
+                <module>a28-cart-aws-dynamodb</module>
+
+                <module>a28-backinstock-api</module>
+                <module>a28-backinstock-sapi</module>
+                <module>a28-backinstock-jpa</module>
+                <module>a28-backinstock-apimapper</module>
+                <module>a28-backinstock-restapi</module>
+
+                <module>a28-compliance-aeb-api</module>
+                <module>a28-compliance-aeb-be</module>
+
+                <module>a28-order-jpa-entity</module>
+                <module>a28-order-jpa</module>
+                <module>a28-order-jpa-plugin</module>
+                <module>a28-order-restapi</module>
+
+                <module>a28-oldcc-api</module>
+                <module>a28-oldcc-apimapper</module>
+                <module>a28-oldcc-sapi</module>
+                <module>a28-oldcc-jpa</module>
+
+                <module>a28-instore-api</module>
+                <module>a28-instore-apimapper</module>
+                <module>a28-instore-jpa</module>
+                <module>a28-instore-restapi</module>
+
+                <module>a28-all-api</module>
+                <module>a28-all-restapi</module>
+                <module>a28-all</module>
+
+                <module>a28-gateway-main</module>
+                <module>a28-gateway-cart</module>
+                <module>a28-gateway-cart-ucp</module>
+                <module>a28-gateway-avstock</module>
+                <module>a28-gateway-instore</module>
+                <module>a28-gateway-mocks</module>
+                <module>a28-gateway-all-spec</module>
+
+                <module>a28-server-main</module>
+                <module>a28-server-rep</module>
+                <module>a28-server-avstock</module>
+                <module>a28-server-cart</module>
+
+                <module>a28-tests-avstock</module>
+                <module>a28-tests-base</module>
+                <module>a28-tests-cart</module>
+                <module>a28-tests-sku</module>
+                <module>a28-tests-stock</module>
+                <module>a28-tests-customer</module>
+                <module>a28-tests-pricing</module>
+                <module>a28-tests-order</module>
+                <module>a28-tests-all</module>
+                <module>a28-tests-remote</module>
+
+                <module>a28-solr</module>
+                <module>a28-sql</module>
+                <module>a28-c4-sql</module>
+                <module>a28-alexa</module>
+
+                <module>a28-settings-zkui</module>
+                <module>a28-zkui-ee</module>
+                <module>a28-zkui-screens</module>
+                <module>a28-zkui</module>
+
+                <module>a28-tests-embedded-bss</module>
+                <module>a28-tests-embedded</module>
+
+                <module>a28-customer-be-ad</module>
+                <module>a28-customer-be-gm</module>
+                <module>a28-tax-be-vertex</module>
+                <module>a28-sendit-api</module>
+                <module>a28-sendit-be</module>
+                <module>a28-metapack-orsaygw</module>
+                <module>a28-metapack-shipengine</module>
+
+                <module>a28-carrier-inpost-be</module>
+                <module>a28-carrier-dhl-be</module>
+                <module>a28-carrier-ups-be</module>
+                <module>a28-carrier-uber-api</module>
+                <module>a28-carrier-uber-be</module>
+                <module>a28-carrier-hermes-be</module>
+                <module>a28-carrier-colissimo-be</module>
+                <module>a28-carrier-mock-be</module>
+                <module>a28-carrier-shipengine-api</module>
+                <module>a28-carrier-shipengine-be</module>
+                <module>a28-carrier-shipengine-apimapper</module>
+                <module>a28-carrier-parcellab-api</module>
+                <module>a28-carrier-parcellab-be</module>
+                <module>a28-carrier-parcellab-apimapper</module>
+
+                <module>a28-landedcost-api</module>
+                <module>a28-landedcost-be</module>
+                <module>a28-aqount-api</module>
+                <module>a28-aqount-io</module>
+                <module>a28-aqount-be</module>
+                <module>a28-sap-fica-io</module>
+                <module>a28-novomind-ipim</module>
+                <module>a28-demandware-apimapper</module>
+                <module>a28-google-services-api</module>
+                <module>a28-google-services-jpa</module>
+                <module>a28-ai-api</module>
+                <module>a28-ai-jpa</module>
+                <module>a28-rss-api</module>
+                <module>a28-rss-jpa</module>
+                <module>a28-rss-be</module>
+
+                <module>a28-psp-common-api</module>
+                <module>a28-psp-common-be</module>
+                <module>a28-psp-computop-api</module>
+                <module>a28-psp-computop-be</module>
+                <module>a28-psp-computop-restapi</module>
+                <module>a28-psp-payone-api</module>
+                <module>a28-psp-payone-apimapper</module>
+                <module>a28-psp-payone-be</module>
+                <module>a28-psp-payone-restapi</module>
+                <module>a28-psp-nuvei-api</module>
+                <module>a28-psp-nuvei-apimapper</module>
+                <module>a28-psp-nuvei-be</module>
+                <module>a28-psp-nuvei-restapi</module>
+
+                <module>a28-tests-tools</module>
+                <module>a28-tests-tools-apiext</module>
+                <module>a28-tests-openapi-codegen</module>
+                <module>a28-tests-openapi</module>
+                <module>a28-fx-ecb</module>
+
+                <module>a28-apollo-api</module>
+                <module>a28-apollo-be</module>
+                <module>a28-hibernate-search-jpa</module>
+                <module>a28-hibernate-search-api</module>
+
+                <module>a28-shopify-api</module>
+                <module>a28-shopify-be</module>
+                <module>a28-shopify-webhook</module>
+
+                <module>a28-ai-ucp-api</module>
+                <module>a28-ai-ucp-be</module>
+                <module>a28-ai-ucp-sapi</module>
+                <module>a28-ai-ucp-restapi</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>checkstyle</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <configuration>
+                            <configLocation>./checkstyle.xml</configLocation>
+                            <sourceDirectories>src/main/java,src/main/bon,src/main/xtend,src/main/sql,src/main/resources</sourceDirectories>
+                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                            <includes>**\/*.java,**\/*.xtend,**\/*.bon,**\/*.bddl,**\/*.sql,**\/*.xml,**\/*.json,**\/*.properties</includes>
+                            <excludes>**\/generated\/,**\/xtend-gen\/,**\/target\/,**\/bin\/</excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>a28-dm</module>
+
+                <module>a28-settings</module>
+                <module>a28-settings-api</module>
+                <module>a28-settings-apimapper</module>
+                <module>a28-settings-java</module>
+                <module>a28-settings-xtend</module>
+                <module>a28-settings-be</module>
+                <module>a28-settings-jpa</module>
+
+                <module>aroma-base-apiext</module>
+                <module>aroma-sku-apiext</module>
+                <module>aroma-avstock-apiext</module>
+                <module>aroma-stock-apiext</module>
+                <module>aroma-customer-apiext</module>
+                <module>aroma-pricing-apiext</module>
+                <module>aroma-cart-apiext</module>
+                <module>aroma-order-apiext</module>
+                <module>aroma-package-apiext</module>
+                <module>aroma-xsdbundle-apiext</module>
+                <module>aroma-backinstock-apiext</module>
+                <module>aroma-instore-apiext</module>
+
+                <module>a28-base-api</module>
+                <module>a28-base-apimapper</module>
+                <module>a28-base-sapi</module>
+                <module>a28-base-jpa-entity</module>
+                <module>a28-base-jpa</module>
+                <module>a28-base-auth-jpa</module>
+
+                <module>a28-rep</module>
+                <module>a28-rep-api</module>
+                <module>a28-rep-be</module>
+                <module>a28-rep-jpa</module>
+
+                <module>a28-sku-api</module>
+                <module>a28-sku-calls</module>
+                <module>a28-sku-apimapper</module>
+                <module>a28-sku-sapi</module>
+                <module>a28-sku-jpa-entity</module>
+                <module>a28-sku-jpa</module>
+                <module>a28-sku-restapi</module>
+
+                <module>a28-stock-api</module>
+                <module>a28-stock-apimapper</module>
+                <module>a28-stock-sapi</module>
+                <module>a28-stock-jpa</module>
+                <module>a28-stock-restapi</module>
+
+                <module>a28-sourcing-api</module>
+                <module>a28-sourcing-sapi</module>
+                <module>a28-sourcing-be</module>
+                <module>a28-sourcing-jpa</module>
+
+                <module>a28-avstock-api</module>
+                <module>a28-avstock-sapi</module>
+                <module>a28-avstock-be</module>
+                <module>a28-avstock-jpa</module>
+                <module>a28-avstock-jdbc</module>
+                <module>a28-avstock-restapi</module>
+
+                <module>a28-history-api</module>
+                <module>a28-history-sapi</module>
+                <module>a28-history-jpa-entity</module>
+                <module>a28-history-jpa</module>
+
+                <module>a28-customer-api</module>
+                <module>a28-customer-sapi</module>
+                <module>a28-customer-be</module>
+                <module>a28-customer-jpa-entity</module>
+                <module>a28-customer-jpa</module>
+                <module>a28-customer-apimapper</module>
+                <module>a28-customer-restapi</module>
+
+                <module>a28-tax-api</module>
+                <module>a28-tax-sapi</module>
+                <module>a28-tax-be</module>
+                <module>a28-tax-jpa</module>
+
+                <module>a28-pricing-api</module>
+                <module>a28-pricing-apimapper</module>
+                <module>a28-pricing-sapi</module>
+                <module>a28-pricing-be</module>
+                <module>a28-pricing-jpa</module>
+                <module>a28-pricing-restapi</module>
+
+                <module>a28-order-api</module>
+                <module>a28-order-apimapper</module>
+                <module>a28-order-sapi</module>
+
+                <module>a28-carrier-api</module>
+                <module>a28-carrier-sapi</module>
+                <module>a28-carrier-jpa</module>
+                <module>a28-carrier-apimapper</module>
+
+                <module>a28-psp-gw-api</module>
+                <module>a28-psp-gw-sapi</module>
+                <module>a28-psp-gw-jpa</module>
+
+                <module>a28-cart-api</module>
+                <module>a28-cart-sapi</module>
+                <module>a28-cart-be</module>
+                <module>a28-cart-ai-be</module>
+                <module>a28-cart-jpa</module>
+                <module>a28-cart-jdbc</module>
+                <module>a28-cart-cma</module>
+                <module>a28-cart-apimapper</module>
+                <module>a28-cart-restapi</module>
+                <module>a28-cart-aws-dynamodb</module>
+
+                <module>a28-backinstock-api</module>
+                <module>a28-backinstock-sapi</module>
+                <module>a28-backinstock-jpa</module>
+                <module>a28-backinstock-apimapper</module>
+                <module>a28-backinstock-restapi</module>
+
+                <module>a28-order-jpa-entity</module>
+                <module>a28-order-jpa</module>
+                <module>a28-order-jpa-plugin</module>
+                <module>a28-order-restapi</module>
+
+                <module>a28-oldcc-api</module>
+                <module>a28-oldcc-apimapper</module>
+                <module>a28-oldcc-sapi</module>
+                <module>a28-oldcc-jpa</module>
+
+                <module>a28-instore-api</module>
+                <module>a28-instore-apimapper</module>
+                <module>a28-instore-jpa</module>
+                <module>a28-instore-restapi</module>
+
+                <module>a28-all-api</module>
+                <module>a28-all-restapi</module>
+                <module>a28-all</module>
+
+                <module>a28-gateway-main</module>
+                <module>a28-gateway-cart</module>
+                <module>a28-gateway-cart-ucp</module>
+                <module>a28-gateway-avstock</module>
+                <module>a28-gateway-instore</module>
+                <module>a28-gateway-mocks</module>
+
+                <module>a28-zkui-ee</module>
+
+                <module>a28-customer-be-ad</module>
+                <module>a28-customer-be-gm</module>
+                <module>a28-tax-be-vertex</module>
+                <module>a28-sendit-api</module>
+                <module>a28-sendit-be</module>
+                <module>a28-metapack-orsaygw</module>
+                <module>a28-metapack-shipengine</module>
+
+                <module>a28-carrier-inpost-be</module>
+                <module>a28-carrier-dhl-be</module>
+                <module>a28-carrier-ups-be</module>
+                <module>a28-carrier-uber-api</module>
+                <module>a28-carrier-uber-be</module>
+                <module>a28-carrier-hermes-be</module>
+                <module>a28-carrier-mock-be</module>
+                <module>a28-carrier-shipengine-api</module>
+                <module>a28-carrier-shipengine-be</module>
+                <module>a28-carrier-shipengine-apimapper</module>
+                <module>a28-carrier-parcellab-api</module>
+                <module>a28-carrier-parcellab-be</module>
+                <module>a28-carrier-parcellab-apimapper</module>
+
+                <module>a28-landedcost-api</module>
+                <module>a28-landedcost-be</module>
+                <module>a28-aqount-api</module>
+                <module>a28-aqount-io</module>
+                <module>a28-aqount-be</module>
+                <module>a28-sap-fica-io</module>
+                <module>a28-novomind-ipim</module>
+                <module>a28-demandware-apimapper</module>
+                <module>a28-google-services-api</module>
+                <module>a28-google-services-jpa</module>
+                <module>a28-ai-api</module>
+                <module>a28-ai-jpa</module>
+                <module>a28-rss-api</module>
+                <module>a28-rss-jpa</module>
+                <module>a28-rss-be</module>
+
+                <module>a28-psp-common-api</module>
+                <module>a28-psp-common-be</module>
+                <module>a28-psp-computop-api</module>
+                <module>a28-psp-computop-be</module>
+                <module>a28-psp-computop-restapi</module>
+                <module>a28-psp-payone-api</module>
+                <module>a28-psp-payone-apimapper</module>
+                <module>a28-psp-payone-be</module>
+                <module>a28-psp-payone-restapi</module>
+                <module>a28-psp-nuvei-api</module>
+                <module>a28-psp-nuvei-apimapper</module>
+                <module>a28-psp-nuvei-be</module>
+                <module>a28-psp-nuvei-restapi</module>
+
+                <module>a28-tests-tools</module>
+                <module>a28-tests-tools-apiext</module>
+                <module>a28-tests-openapi-codegen</module>
+                <module>a28-tests-openapi</module>
+                <module>a28-fx-ecb</module>
+
+                <module>a28-apollo-api</module>
+                <module>a28-apollo-be</module>
+
+                <module>a28-shopify-api</module>
+                <module>a28-shopify-be</module>
+                <module>a28-shopify-webhook</module>
+
+                <module>a28-hibernate-search-jpa</module>
+                <module>a28-hibernate-search-api</module>
+
+                <module>a28-server-main</module>
+                <module>a28-server-rep</module>
+                <module>a28-server-avstock</module>
+                <module>a28-server-cart</module>
+
+                <module>a28-tests-base</module>
+                <module>a28-tests-sku</module>
+                <module>a28-tests-stock</module>
+                <module>a28-tests-customer</module>
+                <module>a28-tests-pricing</module>
+                <module>a28-tests-order</module>
+                <module>a28-tests-all</module>
+                <module>a28-tests-remote</module>
+
+                <module>a28-solr</module>
+                <module>a28-sql</module>
+                <module>a28-c4-sql</module>
+                <module>a28-alexa</module>
+
+                <module>a28-settings-zkui</module>
+                <module>a28-zkui-screens</module>
+
+                <module>a28-tests-embedded-bss</module>
+                <module>a28-tests-embedded</module>
+
+                <module>a28-ai-ucp-api</module>
+                <module>a28-ai-ucp-be</module>
+                <module>a28-ai-ucp-sapi</module>
+                <module>a28-ai-ucp-restapi</module>
+            </modules>
+        </profile>
+    </profiles>
+
+    <reporting>
+
+        <plugins>
+<!--
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <configLocation>${maven.multiModuleProjectDirectory}/checkstyle.xml</configLocation>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+<!--
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Medium</threshold>
+                </configuration>
+            </plugin>
+-->
+        </plugins>
+    </reporting>
+</project>

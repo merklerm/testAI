@@ -4,7 +4,7 @@
 
     <parent>
         <groupId>com.arvato-systems.t9t</groupId>
-        <artifactId>t9t-BlaBlaBla</artifactId>
+        <artifactId>t9t-snapshot</artifactId>
         <version>9.2.8</version>
         <relativePath/>
     </parent>
